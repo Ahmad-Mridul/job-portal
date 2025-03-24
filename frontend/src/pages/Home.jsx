@@ -8,7 +8,6 @@ const Home = () => {
         <div>
             <HomeHero></HomeHero>
             <HotJobs></HotJobs>
-            <JobCard></JobCard>
         </div>
     );
 };

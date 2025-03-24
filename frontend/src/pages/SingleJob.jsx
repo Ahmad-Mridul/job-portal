@@ -1,8 +1,9 @@
-import React from "react";
+import React from 'react';
+import { NavLink, useLoaderData } from 'react-router';
 import { Briefcase, MapPin, Calendar } from "lucide-react";
-import { NavLink } from "react-router";
-
-const JobCard = ({ job }) => {
+const SingleJob = () => {
+    const job = useLoaderData();
+    console.log(job);
     
     return (
         <div className="p-4 shadow-lg rounded-2xl border border-gray-200">
@@ -48,4 +49,4 @@ const JobCard = ({ job }) => {
     );
 };
 
-    export default JobCard;
+export default SingleJob;

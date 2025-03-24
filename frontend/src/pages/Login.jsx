@@ -1,11 +1,14 @@
 import Lottie from "lottie-react";
 import groovyWalkAnimation from "../assets/lotties/register.json"
-import { NavLink } from "react-router";
+import { NavLink, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../utility/AuthProvider";
 import { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
 const Login = () => {
     const {signInUser,signInWithGoogle} = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state || '/';
     const handleLogin = e =>{
         e.preventDefault();
         const form = e.target;
@@ -15,6 +18,7 @@ const Login = () => {
         signInUser(email,password)
         .then(result=>{
             console.log(result);
+            navigate(from);
         })
         .catch(err =>{
             console.log(err.message);
