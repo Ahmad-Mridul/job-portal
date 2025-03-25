@@ -39,6 +39,17 @@ async function run() {
             const qemail = req.query.email;
             const query = {email:qemail}
             const result = await jobApplications.find(query).toArray();
+            for(const application of result){
+                const query = {_id: new ObjectId(application.job_id)};
+                const job = await jobCollection.findOne(query);
+                if(job){
+                    application.job_title = job.title;
+                    application.jobType = job.jobType;
+                    application.location = job.location;
+                    application.company = job.company;
+                    application.company_logo = job.company_logo;
+                }
+            }
             res.send(result)
         })
         app.get('/job-applications',async(req,res)=>{

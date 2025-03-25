@@ -5,9 +5,7 @@ import logo from "/logo-sm.png"
 const NavBar = () => {
     const {user,logOut} = useContext(AuthContext);
     const links = <>
-        <li><a>Item 1</a></li>
-        <li><a>Item 2</a></li>
-        <li><a>Item 3</a></li>
+        <NavLink className="btn" to="/my-applications">My Applications</NavLink>
     </>
     const handleSingOut = () => {
         logOut()
@@ -46,7 +44,7 @@ const NavBar = () => {
                         {links}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl border-blue-500" href="/"><img className="w-8" src={logo} alt="" />Job Portal</a>
+                <NavLink className="btn btn-ghost text-xl border-blue-500" to="/"><img className="w-8" src={logo} alt="" />Job Portal</NavLink>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
