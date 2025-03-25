@@ -35,6 +35,12 @@ async function run() {
             const job = await jobCollection.findOne(query);
             res.send(job);
         })
+        app.get('/job-application',async(req,res)=>{
+            const qemail = req.query.email;
+            const query = {email:qemail}
+            const result = await jobApplications.find(query).toArray();
+            res.send(result)
+        })
         app.get('/job-applications',async(req,res)=>{
             const cursor = jobApplications.find({});
             const result = await cursor.toArray();
