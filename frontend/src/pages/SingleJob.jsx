@@ -2,9 +2,7 @@ import React from 'react';
 import { NavLink, useLoaderData } from 'react-router';
 import { Briefcase, MapPin, Calendar } from "lucide-react";
 const SingleJob = () => {
-    const job = useLoaderData();
-    console.log(job);
-    
+    const job = useLoaderData();    
     return (
         <div className="p-4 shadow-lg rounded-2xl border border-gray-200">
             <div className="flex items-center gap-3 mb-3">
@@ -41,7 +39,7 @@ const SingleJob = () => {
                 {job.salaryRange.min}-{job.salaryRange.max}{" "}
                 {job.salaryRange.currency.toUpperCase()}/Month
                 </p>
-                <NavLink to={`/jobs/${job._id}`} className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+                <NavLink to={`/job-application/${job._id}`} className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
                     Apply Now
                 </NavLink>
             </div>

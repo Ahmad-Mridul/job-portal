@@ -14,7 +14,7 @@ const HotJobs = () => {
         return <span className="loading loading-bars loading-xl"></span>
     }
     return (
-        <div className="grid grid-cols-3 gap-3 p-4">
+        <div className="md:grid grid-cols-3 gap-3 p-4 space-y-4">
             {
                 jobs.map(job=><JobCard key={job._id} job={job}></JobCard>)
             }

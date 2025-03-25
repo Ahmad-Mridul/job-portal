@@ -22,6 +22,7 @@ async function run() {
         // Connect the client to the server	(optional starting in v4.7)
         const jobPortalDB = client.db("Job_Portal");
         const jobCollection = jobPortalDB.collection("jobs");
+        const jobApplications = jobPortalDB.collection("job_applications");
         await client.connect();
         app.get("/jobs",async(req,res)=>{
             const cursor = jobCollection.find({});
@@ -33,6 +34,16 @@ async function run() {
             const query = {_id:new ObjectId(id)}
             const job = await jobCollection.findOne(query);
             res.send(job);
+        })
+        app.get('/job-applications',async(req,res)=>{
+            const cursor = jobApplications.find({});
+            const result = await cursor.toArray();
+            res.send(result);
+        })
+        app.post('/job-applications',async(req,res)=>{
+            const application = req.body;
+            const result = await jobApplications.insertOne(application);
+            res.send(result);
         })
         // Send a ping to confirm a successful connection
         await client.db("admin").command({ ping: 1 });

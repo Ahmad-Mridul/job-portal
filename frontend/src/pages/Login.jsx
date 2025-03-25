@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import Lottie from "lottie-react";
 import groovyWalkAnimation from "../assets/lotties/register.json"
 import { NavLink, useLocation, useNavigate } from "react-router";
@@ -17,7 +18,6 @@ const Login = () => {
         console.log(email,password);
         signInUser(email,password)
         .then(result=>{
-            console.log(result);
             navigate(from);
         })
         .catch(err =>{
